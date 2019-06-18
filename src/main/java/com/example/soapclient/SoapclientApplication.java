@@ -5,9 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SoapclientApplication {
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(SoapclientApplication.class, args);
+		
+		CalculatorClient calcClient = new CalculatorClient();
+		calcClient.useCalculator();
 	}
 
 }
