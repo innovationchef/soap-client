@@ -1,13 +1,11 @@
 
 package org.tempuri;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;
 import javax.xml.ws.WebServiceClient;
-import javax.xml.ws.WebServiceException;
 import javax.xml.ws.WebServiceFeature;
 
 
@@ -17,33 +15,25 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "Calculator", targetNamespace = "http://tempuri.org/", wsdlLocation = "file:/C:/Users/Ankit/Desktop/SoapProject/calculator-source.wsdl")
-public class Calculator
-    extends Service
-{
+@WebServiceClient(name = "Calculator", 
+		targetNamespace = "http://tempuri.org/", 
+		wsdlLocation = "calculator-source.wsdl")
+public class Calculator extends Service {
 
     private final static URL CALCULATOR_WSDL_LOCATION;
-    private final static WebServiceException CALCULATOR_EXCEPTION;
     private final static QName CALCULATOR_QNAME = new QName("http://tempuri.org/", "Calculator");
 
     static {
-        URL url = null;
-        WebServiceException e = null;
-        try {
-            url = new URL("file:/C:/Users/Ankit/Desktop/SoapProject/calculator-source.wsdl");
-        } catch (MalformedURLException ex) {
-            e = new WebServiceException(ex);
-        }
+        URL url = Calculator.class.getClassLoader().getResource("calculator-source.wsdl");
         CALCULATOR_WSDL_LOCATION = url;
-        CALCULATOR_EXCEPTION = e;
     }
 
     public Calculator() {
-        super(__getWsdlLocation(), CALCULATOR_QNAME);
+        super(CALCULATOR_WSDL_LOCATION, CALCULATOR_QNAME);
     }
 
     public Calculator(WebServiceFeature... features) {
-        super(__getWsdlLocation(), CALCULATOR_QNAME, features);
+        super(CALCULATOR_WSDL_LOCATION, CALCULATOR_QNAME, features);
     }
 
     public Calculator(URL wsdlLocation) {
@@ -82,13 +72,6 @@ public class Calculator
     @WebEndpoint(name = "CalculatorSoap")
     public CalculatorSoap getCalculatorSoap(WebServiceFeature... features) {
         return super.getPort(new QName("http://tempuri.org/", "CalculatorSoap"), CalculatorSoap.class, features);
-    }
-
-    private static URL __getWsdlLocation() {
-        if (CALCULATOR_EXCEPTION!= null) {
-            throw CALCULATOR_EXCEPTION;
-        }
-        return CALCULATOR_WSDL_LOCATION;
     }
 
 }
