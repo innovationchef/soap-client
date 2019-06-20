@@ -37,24 +37,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-codegen-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>locate-wsdl</id>
-						<phase>generate-sources</phase>
-						<configuration>
-							<wsdlOptions>
-								<wsdlOption>
-									<wsdl>${project.basedir}/src/main/resources/calculator-source.wsdl</wsdl>
-									<wsdlLocation>calculator-source.wsdl</wsdlLocation>
-								</wsdlOption>
-							</wsdlOptions>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 
